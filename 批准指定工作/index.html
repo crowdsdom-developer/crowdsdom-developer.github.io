@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PUT /tasks/:id/approve (批准指定工作) | 开发者中心</title>
+  <meta name="author" content="集智数据">
+  
+  <meta name="description" content="PUT /tasks/:id/approve (批准指定工作)介绍本 API 让请求者批准一个已提交的指定工作。批准后，工作者将会收到任务设定的报酬，集智也会收取20%的手续费。你也可以选择提供一段简短的反馈给完成工作的工作者。
+HTTP RequestURLhttps://api.crowdsdo">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="PUT /tasks/:id/approve (批准指定工作)"/>
+  <meta property="og:site_name" content="开发者中心"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="开发者中心" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-65157776-4']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">开发者中心</a><span class="split"></span><span class="title">PUT /tasks/:id/approve (批准指定工作)</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
+	<!-- toc -->
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+ 		   generateWikiTOC('.note', '.toc',  2 , 2 );
+		});
+</script>
+  </div><!-- col-md-3 -->
+  
+  
+
+  
+  <div class="col-xs-12 col-sm-9 col-md-9 note">
+	
+
+	  <!-- content -->
+	  <h1 id="PUT_/tasks/:id/approve_(批准指定工作)">PUT /tasks/:id/approve (批准指定工作)</h1><h2 id="介绍">介绍</h2><p>本 API 让请求者批准一个已提交的<a href="/指定工作">指定工作</a>。批准后，工作者将会收到任务设定的报酬，集智也会收取20%的手续费。你也可以选择提供一段简短的反馈给完成工作的工作者。</p>
+<h2 id="HTTP_Request">HTTP Request</h2><h4 id="URL">URL</h4><p><code>https://api.crowdsdom.com/v1/tasks/:id/approve</code></p>
+<h4 id="HTTP_Method">HTTP Method</h4><p><code>PUT</code></p>
+<h4 id="HTTP_Header">HTTP Header</h4><p><code>Content-Type: application/json</code><br><code>Authorization: YOUR_ACCESS_TOKEN</code></p>
+<h2 id="参数">参数</h2><h4 id="URL-1">URL</h4><p>以下的参数直接放在 http 请求的 URL 中。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>欲批准的指定工作的专属识别号</td>
+<td>String</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="Body">Body</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>feedback</td>
+<td>给工作者的反馈</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="回复">回复</h2><p>若 http request 成功批准指定工作，则将返回 status code : 200。<br>若没成功，系统则会返回错误的代码及原因。</p>
+<h2 id="示例">示例</h2><p>以Python requests 直接调用 API 接口为例：</p>
+<h4 id="请求">请求</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- encoding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">API_URL = <span class="string">'https://api.crowdsdom.com/v1/tasks/5639c1dc831c7b22009b71ef/approve'</span></span><br><span class="line"></span><br><span class="line">headers = &#123;<span class="string">'Authorization'</span>: <span class="string">'YOUR_ACCESS_TOKEN'</span>&#125;</span><br><span class="line"></span><br><span class="line">response = requests.post(API_URL, headers=headers)</span><br></pre></td></tr></table></figure>
+<h4 id="回复-1">回复</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"job"</span>: &#123;</span><br><span class="line">    <span class="string">"updatedAt"</span>: <span class="string">"2015-11-04T09:44:33.434Z"</span>,</span><br><span class="line">    <span class="string">"keywords"</span>: [],</span><br><span class="line">    <span class="string">"lifetime"</span>: <span class="number">86400</span>,</span><br><span class="line">    <span class="string">"id"</span>: <span class="string">"5639c1dc831c7b22009b71ef"</span>,</span><br><span class="line">    <span class="string">"numberOfTasksReturned"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"taskDuration"</span>: <span class="number">300</span>,</span><br><span class="line">    <span class="string">"title"</span>: <span class="string">"判断微博内容有无地域歧视"</span>,</span><br><span class="line">    <span class="string">"numberOfTasksAvailable"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"jobTypeId"</span>: <span class="string">"56385ed9831c7b22009b712d"</span>,</span><br><span class="line">    <span class="string">"autoApprovalDelay"</span>: <span class="number">3600</span>,</span><br><span class="line">    <span class="string">"createdAt"</span>: <span class="string">"2015-11-04T08:29:16.744Z"</span>,</span><br><span class="line">    <span class="string">"maxTasks"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">"expirationTime"</span>: <span class="string">"2015-11-05T08:29:16.744Z"</span>,</span><br><span class="line">    <span class="string">"status"</span>: <span class="string">"completed"</span>,</span><br><span class="line">    <span class="string">"description"</span>: <span class="string">"根据微博回答问题"</span>,</span><br><span class="line">    <span class="string">"reviewStatus"</span>: <span class="string">"NotReviewed"</span>,</span><br><span class="line">    <span class="string">"numberOfTasksSubmitted"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"numberOfTasksRejected"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"externalQuestionsForm"</span>: &#123;</span><br><span class="line">      <span class="string">"url"</span>: <span class="string">"http://wb_region/survey"</span>,</span><br><span class="line">      <span class="string">"frameHeight"</span>: <span class="number">500</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"numberOfTasksApproved"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">"assignable"</span>: false,</span><br><span class="line">    <span class="string">"questionsType"</span>: <span class="string">"externalQuestionsForm"</span>,</span><br><span class="line">    <span class="string">"numberOfTasksPending"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">"ownerId"</span>: <span class="string">"56309424f1524a2b002310d5"</span>,</span><br><span class="line">    <span class="string">"reward"</span>: &#123;</span><br><span class="line">      <span class="string">"amount"</span>: <span class="number">0.1</span>,</span><br><span class="line">      <span class="string">"formattedPrice"</span>: <span class="string">"0.10元"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"task"</span>: &#123;</span><br><span class="line">    <span class="string">"status"</span>: <span class="string">"approved"</span>,</span><br><span class="line">    <span class="string">"approvalTime"</span>: <span class="string">"2015-11-04T09:44:33.420Z"</span>,</span><br><span class="line">    <span class="string">"submitTime"</span>: null,</span><br><span class="line">    <span class="string">"answers"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"status"</span>: <span class="string">"success"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"jobId"</span>: <span class="string">"5639c1dc831c7b22009b71ef"</span>,</span><br><span class="line">    <span class="string">"acceptTime"</span>: <span class="string">"2015-11-04T09:21:51.274Z"</span>,</span><br><span class="line">    <span class="string">"requesterId"</span>: <span class="string">"56309424f1524a2b002310d5"</span>,</span><br><span class="line">    <span class="string">"updatedAt"</span>: <span class="string">"2015-11-04T09:44:33.420Z"</span>,</span><br><span class="line">    <span class="string">"contributorId"</span>: <span class="string">"563172bc9b7dbf2b00612c31"</span>,</span><br><span class="line">    <span class="string">"expirationTime"</span>: <span class="string">"2015-11-04T09:26:51.274Z"</span>,</span><br><span class="line">    <span class="string">"id"</span>: <span class="string">"5639ce2f831c7b22009b7253"</span>,</span><br><span class="line">    <span class="string">"createdAt"</span>: <span class="string">"2015-11-04T09:21:51.274Z"</span>,</span><br><span class="line">    <span class="string">"rejectionTime"</span>: null</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>	  
+
+    <hr/>
+    <div class="ds-thread" data-thread-key="cih8qu97w000cregj23rx93av" data-title="PUT /tasks/:id/approve (批准指定工作)"
+data-url="批准指定工作/index.html"></div>
+
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+			
+		
+	
+		
+	
+		
+	
+		
+	
+	
+		<li class="prev"><a href="/拒绝指定工作/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next disabled"><a>next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 集智数据
+      
+</p> </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"undefined"};
+(function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+ })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

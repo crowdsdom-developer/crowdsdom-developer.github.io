@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>POST /jobs (发布任务) | 开发者中心</title>
+  <meta name="author" content="集智数据">
+  
+  <meta name="description" content="POST /jobs (发布任务)介绍本 API 让请求者发布一个新的集智任务。这个集智任务将被展示在我们的平台上，有兴趣的工作者即可以接受并完成这个任务。
+我们提供三种不同的方式让请求者定制自己的任务：
+
+内部问题表单 (InternalQuestionsForm)：使用集智的语法，用 JSON ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="POST /jobs (发布任务)"/>
+  <meta property="og:site_name" content="开发者中心"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="开发者中心" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-65157776-4']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">开发者中心</a><span class="split"></span><span class="title">POST /jobs (发布任务)</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
+	<!-- toc -->
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+ 		   generateWikiTOC('.note', '.toc',  2 , 2 );
+		});
+</script>
+  </div><!-- col-md-3 -->
+  
+  
+
+  
+  <div class="col-xs-12 col-sm-9 col-md-9 note">
+	
+
+	  <!-- content -->
+	  <h1 id="POST_/jobs_(发布任务)">POST /jobs (发布任务)</h1><h2 id="介绍">介绍</h2><p>本 API 让请求者发布一个新的<a href="/集智任务">集智任务</a>。这个集智任务将被展示在我们的平台上，有兴趣的工作者即可以接受并完成这个任务。</p>
+<p>我们提供三种不同的方式让请求者定制自己的任务：</p>
+<ul>
+<li><p><strong><a href="/任务问题/#内部问题表单">内部问题表单 (InternalQuestionsForm)</a></strong>：使用集智的语法，用 JSON 的形式直接定义任务中的问题。</p>
+</li>
+<li><p><strong><a href="/任务问题/#外部问题表单">外部问题表单 (ExternalQuestionsForm)</a></strong>：将问题放在你自己的网站上，提供 link 由我们呈现在集智的平台上。</p>
+</li>
+<li><p><strong><a href="/任务问题/#HTML问题表单">HTML问题表单 (HTMLQuestionsForm)</a></strong>：将问题的内容以 HTML 字串的形式传入。</p>
+</li>
+</ul>
+<h4 id="指定任务类型">指定任务类型</h4><p>在发布任务时，请求者可以选择指定<a href="/任务类型">任务类型</a>，让相同任务类型的任务聚集起来，方便工作者做大量类似的任务。当请求者指定任务类型时，本任务的 title, description, reward, keywords, taskDuration, lifetime, maxTasks, 和 autoApprovalDelay 均会继承任务类型设定的内容。除了 maxTasks 之外，均无法更改。</p>
+<h2 id="HTTP_Request">HTTP Request</h2><h4 id="URL">URL</h4><p><code>https://api.crowdsdom.com/v1/jobs</code></p>
+<h4 id="HTTP_Method">HTTP Method</h4><p><code>POST</code></p>
+<h4 id="HTTP_Header">HTTP Header</h4><p><code>Content-Type: application/json</code><br><code>Authorization: YOUR_ACCESS_TOKEN</code></p>
+<h2 id="参数">参数</h2><h4 id="Body">Body</h4><p>以下的参数在 http 请求的 Body 中以 JSON 的格式传入。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>工作者看到的任务标题。</td>
+<td>String</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>description</td>
+<td>介绍该任务的简短描述。</td>
+<td>String</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>jobTypeId</td>
+<td>任务的任务类型之专属识别号，定义了任务的 title, description, reward, keywords, taskDuration, lifetime, maxTasks, 和 autoApprovalDelay。<br>当请求者指定了任务类型，以上这些栏位均变为非必填。除了 maxTasks 之外，均无法在本请求中更改。</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>questionsType</td>
+<td>任务发布的方式，必须符合三种预设的方式之一。<br> <em>详情请见<a href="/任务问题">任务问题表单的数据结构</a>。</em></td>
+<td>String</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>internalQuestionsForm</td>
+<td>内部问题表单</td>
+<td>Object</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>externalQuestionsForm</td>
+<td>外部问题表单</td>
+<td>Object</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>htmlQuestionsForm</td>
+<td>HTML问题表单</td>
+<td>Object</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>reward</td>
+<td>工作者完成任务能得到的酬劳，由 amount 与 currencyCode 组成。amount 是指酬劳的金额，currencyCode 则是币种。<br> <em>范例：若想设定酬劳为￥0.1，则应该在 reward 传入：{“amount” : 0.10, “currencyCode”: “CNY”}</em></td>
+<td>Object</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>让工作者更易搜索到该任务的关键词 (组)。<br><em>若有超过一个关键词，用逗号隔开。</em></td>
+<td>String</td>
+<td>None</td>
+<td>No  </td>
+</tr>
+<tr>
+<td>lifetime</td>
+<td>任务失效的时间 (秒)，失效后任何工作者均无法接受该任务。<br> <em>最小值： 600（10 分钟），最大值：2592000（30天）</em></td>
+<td>Integer</td>
+<td>604800</td>
+<td>No</td>
+</tr>
+<tr>
+<td>taskDuration</td>
+<td>工作者接受指定工作后，必须完成任务的时间 (秒) <br> <em>最小值：300（5分钟），最大值：86400（1天）</em></td>
+<td>Integer</td>
+<td>300</td>
+<td>No</td>
+</tr>
+<tr>
+<td>maxTasks</td>
+<td>能够接受该任务的工作者数量 <br> <em>最小值：1，最大值：10000</em></td>
+<td>Integer</td>
+<td>1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>autoAprrovalDelay</td>
+<td>系统自动批准工作结果的时间 (秒)。若在这段时间内请求者没有主动拒绝，则视为该工作被接受 <br> <em>最小值：0 (立即接受)，最大值：2592000（30天）</em></td>
+<td>Integer</td>
+<td>86400</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="回复">回复</h2><p>若 http request 成功发布任务(status code: 200)，系统将会返回已发布的集智任务(Job)，详情请见<a href="/集智任务">集智任务的数据结构</a>。若没成功，系统则会返回错误的代码及原因。</p>
+<h2 id="示例">示例</h2><p>以Python requests 直接调用 API 接口为例：</p>
+<h4 id="请求">请求</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- encoding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">API_URL = <span class="string">"https://api.crowdsdom.com/v1/jobs"</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">            <span class="string">"Authorization"</span>: <span class="string">"YOUR_ACCESS_TOKEN"</span>,</span><br><span class="line">            <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span>&#125;</span><br><span class="line"></span><br><span class="line">job_settings = &#123;</span><br><span class="line">                 <span class="string">"title"</span>:<span class="string">"微博情感分析"</span>,</span><br><span class="line">                 <span class="string">"description"</span>:<span class="string">"判断博文中所表达的情绪"</span>,</span><br><span class="line">                 <span class="string">"keywords"</span>: [<span class="string">"情感分析"</span>,<span class="string">"微博"</span>],</span><br><span class="line">                 <span class="string">"questionsType"</span>:<span class="string">"internalQuestionsForm"</span>,</span><br><span class="line">                 <span class="string">"internalQuestionsForm"</span>: &#123;</span><br><span class="line">                    <span class="string">"questions"</span>: [&#123;</span><br><span class="line">                      <span class="string">"id"</span>:<span class="string">"sentiment"</span>,</span><br><span class="line">                      <span class="string">"title"</span>:<span class="string">"黄山温泉太啃外地人了一张票298而本地人却58太不合理了！"</span>,</span><br><span class="line">                      <span class="string">"isRequired"</span>: <span class="keyword">True</span>,</span><br><span class="line">                      <span class="string">"answerType"</span>: <span class="string">"SelectionAnswer"</span>,</span><br><span class="line">                      <span class="string">"answerSpec"</span>: &#123;</span><br><span class="line">                        <span class="string">"minSelectionCount"</span>: <span class="number">1</span>,</span><br><span class="line">                        <span class="string">"maxSelectionCount"</span>: <span class="number">1</span>,</span><br><span class="line">                        <span class="string">"style"</span>: <span class="string">"radiobutton"</span>,</span><br><span class="line">                        <span class="string">"optionSpecs"</span>: [</span><br><span class="line">                          &#123;<span class="string">"id"</span>:<span class="string">"positive"</span>,<span class="string">"text"</span>:<span class="string">"正面"</span>&#125;,</span><br><span class="line">                          &#123;<span class="string">"id"</span>:<span class="string">"negative"</span>,<span class="string">"text"</span>:<span class="string">"负面"</span>&#125;,</span><br><span class="line">                          &#123;<span class="string">"id"</span>:<span class="string">"neutral"</span>,<span class="string">"text"</span>:<span class="string">"中性"</span>&#125;</span><br><span class="line">                        ]               </span><br><span class="line">                      &#125;</span><br><span class="line">                    &#125;]</span><br><span class="line">                  &#125;,</span><br><span class="line">                  <span class="string">"reward"</span>: &#123;<span class="string">"amount"</span>: <span class="number">0.1</span>, <span class="string">"currencyCode"</span>: <span class="string">"CNY"</span>&#125;</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">data = json.dumps(job_settings)</span><br><span class="line"></span><br><span class="line">response = requests.post(API_URL, headers=headers, data=data)</span><br></pre></td></tr></table></figure>
+<h4 id="回复-1">回复</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"id"</span>: <span class="string">"56023bc793a22d17004b86be"</span>,</span><br><span class="line">  <span class="string">"status"</span>: <span class="string">"assignable"</span>,</span><br><span class="line">  <span class="string">"taskDuration"</span>: <span class="number">300</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"判断博文中所表达的情绪"</span>,</span><br><span class="line">  <span class="string">"reviewStatus"</span>: <span class="string">"NotReviewed"</span>,</span><br><span class="line">  <span class="string">"title"</span>: <span class="string">"微博情感分析"</span>,</span><br><span class="line">  <span class="string">"numberOfTasksAvailable"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="string">"questionsType"</span>: <span class="string">"internalQuestionsForm"</span>,</span><br><span class="line">  <span class="string">"numberOfTasksPending"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="string">"numberOfTasksCompleted"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="string">"autoApprovalDelay"</span>: <span class="number">86400</span>,</span><br><span class="line">  <span class="string">"maxTasks"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="string">"updatedAt"</span>: <span class="string">"2015-09-23T05:42:31.567Z"</span>,</span><br><span class="line">  <span class="string">"internalQuestionsForm"</span>: &#123;</span><br><span class="line">    <span class="string">"questions"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"isRequired"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">"title"</span>: <span class="string">"黄山温泉太啃外地人了一张票298而本地人却58太不合理了！"</span>,</span><br><span class="line">        <span class="string">"answerType"</span>: <span class="string">"SelectionAnswer"</span>,</span><br><span class="line">        <span class="string">"id"</span>: <span class="string">"sentiment"</span>,</span><br><span class="line">        <span class="string">"answerSpec"</span>: &#123;</span><br><span class="line">          <span class="string">"optionSpecs"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="string">"text"</span>: <span class="string">"正面"</span>,</span><br><span class="line">              <span class="string">"id"</span>: <span class="string">"positive"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="string">"text"</span>: <span class="string">"负面"</span>,</span><br><span class="line">              <span class="string">"id"</span>: <span class="string">"negative"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="string">"text"</span>: <span class="string">"中性"</span>,</span><br><span class="line">              <span class="string">"id"</span>: <span class="string">"neutral"</span></span><br><span class="line">            &#125;</span><br><span class="line">          ],</span><br><span class="line">          <span class="string">"style"</span>: <span class="string">"radiobutton"</span>,</span><br><span class="line">          <span class="string">"maxSelectionCount"</span>: <span class="number">1</span>,</span><br><span class="line">          <span class="string">"minSelectionCount"</span>: <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"keywords"</span>: [</span><br><span class="line">    <span class="string">"情感分析"</span>,</span><br><span class="line">    <span class="string">"微博"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"lifetime"</span>: <span class="number">600</span>,</span><br><span class="line">  <span class="string">"expirationTime"</span>: <span class="string">"2015-09-23T05:52:31.565Z"</span>,</span><br><span class="line">  <span class="string">"reward"</span>: &#123;</span><br><span class="line">    <span class="string">"amount"</span>: <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">"formattedPrice"</span>: <span class="string">"0.1元"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"createdAt"</span>: <span class="string">"2015-09-23T05:42:31.565Z"</span>,</span><br><span class="line">  <span class="string">"ownerId"</span>: <span class="string">"55fffdbc220c681700f5eaca"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+	  
+
+    <hr/>
+    <div class="ds-thread" data-thread-key="cih8qu989000lregjpgtmo24g" data-title="POST /jobs (发布任务)"
+data-url="发布任务/index.html"></div>
+
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+			
+		
+	
+		
+			
+			
+		
+	
+		
+			
+			
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+	
+		
+	
+		
+	
+	
+		<li class="prev"><a href="/身份验证/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next"><a href="/取得任务的指定工作/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 集智数据
+      
+</p> </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"undefined"};
+(function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+ })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

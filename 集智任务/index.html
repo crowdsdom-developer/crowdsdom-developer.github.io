@@ -1,0 +1,414 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>集智任务 (Job) | 开发者中心</title>
+  <meta name="author" content="集智数据">
+  
+  <meta name="description" content="介绍本文档中的数据结构对应到一个集智任务 (Job)。下列的 API 以集智任务作为回复的内容：
+
+发布任务
+
+数据结构
+
+
+名称
+描述
+Type
+Default
+
+
+
+
+id
+此集智任务专属的识别号。
+String
+None
+
+
+jobTypeId
+任务类别识别号
+String
+None
+
+
+ti">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="集智任务 (Job)"/>
+  <meta property="og:site_name" content="开发者中心"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="开发者中心" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-65157776-4']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">开发者中心</a><span class="split"></span><span class="title">集智任务 (Job)</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
+	<!-- toc -->
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+ 		   generateWikiTOC('.note', '.toc',  2 , 2 );
+		});
+</script>
+  </div><!-- col-md-3 -->
+  
+  
+
+  
+  <div class="col-xs-12 col-sm-9 col-md-9 note">
+	
+
+	  <!-- content -->
+	  <h2 id="介绍">介绍</h2><p>本文档中的数据结构对应到一个集智任务 (Job)。下列的 API 以集智任务作为回复的内容：</p>
+<ul>
+<li><a href="/发布任务">发布任务</a></li>
+</ul>
+<h2 id="数据结构">数据结构</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>此集智任务专属的识别号。</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>jobTypeId</td>
+<td>任务类别识别号</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>title</td>
+<td>工作者看到的任务标题。</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>description</td>
+<td>介绍该任务的简短描述。</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>让工作者更易搜索到该任务的关键词 (组)。</td>
+<td>String[]</td>
+<td>None</td>
+</tr>
+<tr>
+<td>status</td>
+<td>任务的状态。可能的值包含：<ul> <li><strong>unreviewable</strong>: 尚未有可审查的工作</li> <li><strong>reviewable</strong>: 已有工作者送出可审查的工作</li>  <li><strong>completed</strong>: 已达最大工作额度，并且所有工作皆完成审查 </li> </ul></td>
+<td>String</td>
+<td>unreviewable</td>
+</tr>
+<tr>
+<td>assignable</td>
+<td>任务是否可指派给工作者</td>
+<td>Boolean</td>
+<td>true</td>
+</tr>
+<tr>
+<td>lifetime</td>
+<td>任务失效的时间 (秒)，失效后任何工作者均无法接受该任务。</td>
+<td>Integer</td>
+<td>604800</td>
+</tr>
+<tr>
+<td>taskDuration</td>
+<td>工作者接受指定工作后，必须完成任务的时间 (秒)</td>
+<td>Integer</td>
+<td>300</td>
+</tr>
+<tr>
+<td>maxTasks</td>
+<td>任务最大工作数量</td>
+<td>Integer</td>
+<td>1</td>
+</tr>
+<tr>
+<td>autoApprovalDelay</td>
+<td>系统自动批准工作结果的时间 (秒)。若在这段时间内请求者没有主动拒绝，则视为该工作被批准</td>
+<td>Integer</td>
+<td>86400</td>
+</tr>
+<tr>
+<td>expirationTime</td>
+<td>任务失效的日期</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>questionsType</td>
+<td>任务发布的方式，必须符合三种预设的方式之一。 <ul><li>internalQuestionsForm</li><li>externalQuestionsForm</li><li>htmlQuestionsForm</li></ul></td>
+<td>String</td>
+<td>None  </td>
+</tr>
+<tr>
+<td>internalQuestionsForm</td>
+<td>内部问题表单</td>
+<td>Object</td>
+<td>None</td>
+</tr>
+<tr>
+<td>externalQuestionsForm</td>
+<td>外部问题表单</td>
+<td>Object</td>
+<td>None</td>
+</tr>
+<tr>
+<td>htmlQuestionsForm</td>
+<td>HTML问题表单</td>
+<td>Object</td>
+<td>None</td>
+</tr>
+<tr>
+<td>requesterAnnotation</td>
+<td>请求者注释</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>numberOfSimilarJobs</td>
+<td>类似的工作数量</td>
+<td>Number</td>
+<td>None</td>
+</tr>
+<tr>
+<td>reviewStatus</td>
+<td>任务审查状况</td>
+<td>String</td>
+<td>NotReviewed</td>
+</tr>
+<tr>
+<td>reward</td>
+<td>工作者完成任务能得到的酬劳，由 amount 与 currencyCode 组成。amount 是指酬劳的金额，currencyCode 则是币种。</td>
+<td>Object</td>
+<td>None  </td>
+</tr>
+<tr>
+<td>numberOfTasksPending</td>
+<td>工作者已接受但还未完成或退回的指定工作数量</td>
+<td>Integer</td>
+<td>None</td>
+</tr>
+<tr>
+<td>numberOfTasksAvailable</td>
+<td>还能让工作者接受的指定工作数量</td>
+<td>Integer</td>
+<td>maxTasks</td>
+</tr>
+<tr>
+<td>numberOfTasksApproved</td>
+<td>请求者已批准的指定工作数量</td>
+<td>Integer</td>
+<td>0</td>
+</tr>
+<tr>
+<td>numberOfTasksRejected</td>
+<td>请求者已拒绝的指定工作数量</td>
+<td>Integer</td>
+<td>0</td>
+</tr>
+<tr>
+<td>numberOfTasksSubmitted</td>
+<td>工作者已送出的工作数量</td>
+<td>Integer</td>
+<td>0</td>
+</tr>
+<tr>
+<td>numberOfTasksReturned</td>
+<td>工作者已退还的工作数量</td>
+<td>Integer</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ownerId</td>
+<td>创建任务的请求者之专属识别号</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>任务创立的日期</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td>任务修改的日期</td>
+<td>String</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h2 id="示例">示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    jobTypeId: <span class="string">"5625f62819556e1700a184f6"</span>,</span><br><span class="line">    title: <span class="string">"任务类型测试"</span>,</span><br><span class="line">    description: <span class="string">"duang~"</span>,</span><br><span class="line">    keywords: [</span><br><span class="line">        <span class="string">"情感分析"</span>,</span><br><span class="line">        <span class="string">"微博"</span></span><br><span class="line">    ],</span><br><span class="line">    status: <span class="string">"unreviewable"</span>,</span><br><span class="line">    assignable: <span class="literal">true</span>,</span><br><span class="line">    lifetime: <span class="number">1200</span>,</span><br><span class="line">    taskDuration: <span class="number">300</span>,</span><br><span class="line">    maxTasks: <span class="number">1</span>,</span><br><span class="line">    autoApprovalDelay: <span class="number">86400</span>,</span><br><span class="line">    expirationTime: <span class="string">"2015-10-20T08:29:30.339Z"</span>,</span><br><span class="line">    questionsType: <span class="string">"internalQuestionsForm"</span>,</span><br><span class="line">    reviewStatus: <span class="string">"NotReviewed"</span>,</span><br><span class="line">    numberOfTasksReturned: <span class="number">0</span>,</span><br><span class="line">    ownerId: <span class="string">"5619bc29646dfb170093abba"</span>,</span><br><span class="line">    reward: &#123;</span><br><span class="line">        amount: <span class="number">1</span>,</span><br><span class="line">        formattedPrice: <span class="string">"1.00元"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    createdAt: <span class="string">"2015-10-20T08:09:30.339Z"</span>,</span><br><span class="line">    updatedAt: <span class="string">"2015-10-20T08:09:30.339Z"</span>,</span><br><span class="line">    internalQuestionsForm: &#123;</span><br><span class="line">        questions: [&#123;</span><br><span class="line">            id: <span class="string">"sentiment"</span>,</span><br><span class="line">            title: <span class="string">"黄山温泉太啃外地人了一张票298而本地人却58太不合理了！"</span>,</span><br><span class="line">            comment: <span class="string">""</span>,</span><br><span class="line">            isRequired: <span class="literal">true</span>,</span><br><span class="line">            answerType: <span class="string">"SelectionAnswer"</span></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    id: <span class="string">"5625f6ba19556e1700a18501"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+	  
+
+    <hr/>
+    <div class="ds-thread" data-thread-key="cih8qu97b0003regjvhetrzf0" data-title="集智任务 (Job)"
+data-url="集智任务/index.html"></div>
+
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			
+		
+	
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+			
+		
+	
+	
+		<li class="prev"><a href="/任务问题/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next disabled"><a>next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 集智数据
+      
+</p> </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"undefined"};
+(function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+ })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

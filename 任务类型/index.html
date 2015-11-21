@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>任务类型 (JobType) | 开发者中心</title>
+  <meta name="author" content="集智数据">
+  
+  <meta name="description" content="介绍本文档中的数据结构对应到一个任务类型 (JobType)。任务类型能够让你把拥有相似属性的集智任务聚集起来，这样能方便工作者根据任务类型自动接受下一个任务。下列的 API 以任务类型作为回复的内容：
+
+创建任务类型
+任务类型列表
+
+数据结构
+
+
+名称
+描述
+Type
+Default
+
+
+
+
+id">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="任务类型 (JobType)"/>
+  <meta property="og:site_name" content="开发者中心"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="开发者中心" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-65157776-4']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">开发者中心</a><span class="split"></span><span class="title">任务类型 (JobType)</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
+	<!-- toc -->
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+ 		   generateWikiTOC('.note', '.toc',  2 , 2 );
+		});
+</script>
+  </div><!-- col-md-3 -->
+  
+  
+
+  
+  <div class="col-xs-12 col-sm-9 col-md-9 note">
+	
+
+	  <!-- content -->
+	  <h2 id="介绍">介绍</h2><p>本文档中的数据结构对应到一个任务类型 (JobType)。任务类型能够让你把拥有相似属性的<a href="/集智任务">集智任务</a>聚集起来，这样能方便工作者根据任务类型自动接受下一个任务。下列的 API 以任务类型作为回复的内容：</p>
+<ul>
+<li><a href="/创建任务类型">创建任务类型</a></li>
+<li><a href="/任务类型列表">任务类型列表</a></li>
+</ul>
+<h2 id="数据结构">数据结构</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>任务类型专属的识别号</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>title</td>
+<td>任务类型定义的任务标题</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>description</td>
+<td>任务类型定义的任务描述</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>reward</td>
+<td>任务类型定义的工作报酬</td>
+<td>Object</td>
+<td>None</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>任务类型定义的任务关键词</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>taskDuration</td>
+<td>任务类型定义的工作者工作时间 (秒)</td>
+<td>Integer</td>
+<td>300</td>
+</tr>
+<tr>
+<td>lifetime</td>
+<td>任务类型定义的任务失效时间 (秒)</td>
+<td>Integer</td>
+<td>604800</td>
+</tr>
+<tr>
+<td>maxTasks</td>
+<td>任务类型定义能够接受该任务的工作者数量</td>
+<td>Integer</td>
+<td>1</td>
+</tr>
+<tr>
+<td>autoApprovalDelay</td>
+<td>此任务类型定义系统自动批准工作结果的时间 (秒)</td>
+<td>Integer</td>
+<td>86400</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>任务类型创立的日期</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td>任务类型修改的日期</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ownerId</td>
+<td>创建任务类型的请求者之专属识别号</td>
+<td>String</td>
+<td>None</td>
+</tr>
+<tr>
+<td>assignable</td>
+<td>任务类型中是否包含可指派的任务</td>
+<td>Boolean</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h2 id="示例">示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"id"</span>: <span class="string">"507f191e810c19729de860ea"</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"判断博文中所表达的情绪"</span>,</span><br><span class="line">  <span class="string">"title"</span>: <span class="string">"微博情感分析"</span>,</span><br><span class="line">  <span class="string">"keywords"</span>: [</span><br><span class="line">    <span class="string">"情感分析"</span>,</span><br><span class="line">    <span class="string">"微博"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"lifetime"</span>: <span class="number">604800</span>,</span><br><span class="line">  <span class="string">"taskDuration"</span>: <span class="number">300</span>,</span><br><span class="line">  <span class="string">"maxTasks"</span>: <span class="number">3</span>,</span><br><span class="line">  <span class="string">"autoApprovalDelay"</span>: <span class="number">86400</span>,</span><br><span class="line">  <span class="string">"reward"</span>: &#123;</span><br><span class="line">    <span class="string">"amount"</span>: <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">"formattedPrice"</span>: <span class="string">"0.1元"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"createdAt"</span>: <span class="string">"2015-09-23T05:42:31.565Z"</span>,</span><br><span class="line">  <span class="string">"updatedAt"</span>: <span class="string">"2015-09-23T05:42:31.567Z"</span>,  </span><br><span class="line">  <span class="string">"ownerId"</span>: <span class="string">"55fffdbc220c681700f5eaca"</span>,</span><br><span class="line">  <span class="string">"assignable"</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+	  
+
+    <hr/>
+    <div class="ds-thread" data-thread-key="cih8qu96y0000regjj61tdaon" data-title="任务类型 (JobType)"
+data-url="任务类型/index.html"></div>
+
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			
+			
+		
+	
+		
+	
+		
+	
+		
+			
+			
+			
+		
+			
+		
+	
+		
+			
+		
+	
+	
+		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next"><a href="/指定工作/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 集智数据
+      
+</p> </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"undefined"};
+(function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+ })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

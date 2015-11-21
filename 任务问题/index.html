@@ -1,0 +1,524 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>任务问题表单 (QuestionsForm) | 开发者中心</title>
+  <meta name="author" content="集智数据">
+  
+  <meta name="description" content="介绍集智提供请求者三种不同方式在发布任务时设定任务中的问题表单。内部问题表单让请求者用 JSON 的格式设定问题表单的内容。外部问题表单则让请求者将自己网站上的问题表单以 iframe 的形式呈现在我们的平台上。HTML问题表单让请求者可以用 html 字串的形式传入问题表单，由集智将 html 直">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="任务问题表单 (QuestionsForm)"/>
+  <meta property="og:site_name" content="开发者中心"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="开发者中心" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-65157776-4']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">开发者中心</a><span class="split"></span><span class="title">任务问题表单 (QuestionsForm)</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  <div class="col-xs-12 col-sm-3 col-md-3 toc"> 
+	<!-- toc -->
+<script type="text/javascript">
+		jQuery(document).ready(function() {
+ 		   generateWikiTOC('.note', '.toc',  2 , 2 );
+		});
+</script>
+  </div><!-- col-md-3 -->
+  
+  
+
+  
+  <div class="col-xs-12 col-sm-9 col-md-9 note">
+	
+
+	  <!-- content -->
+	  <h2 id="介绍">介绍</h2><p>集智提供请求者三种不同方式在发布任务时设定任务中的问题表单。内部问题表单让请求者用 JSON 的格式设定问题表单的内容。外部问题表单则让请求者将自己网站上的问题表单以 iframe 的形式呈现在我们的平台上。HTML问题表单让请求者可以用 html 字串的形式传入问题表单，由集智将 html 直接呈现在网站上。HTML问题表单可视为内部问题表单与外部问题表单的折衷，请求者无需使用 JSON 的格式定义任务问题，也不用自行架设网站来呈现问题表单。</p>
+<h2 id="内部问题表单">内部问题表单</h2><!--(internalQuestionsForm)-->
+<p>内部问题表单 (internalQuestionsForm) 由 JSON 的格式定义任务中的问题内容。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>questions</td>
+<td>包含所有内部问题的阵列，有关内部问题的设定见下表。 <br> <em>必须至少包含一个问题</em></td>
+<td>Array</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>内部问题的设定如下：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>此问题的专属识别号</td>
+<td>String</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>title</td>
+<td>呈现在问题前面的文字，以标题方式呈现</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>呈现在问题后面的文字</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>isRequired</td>
+<td>本问题是否为必填</td>
+<td>Boolean</td>
+<td>False</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>answerType</td>
+<td>本问题的答案类型，为下列两种其中之一： <br> <strong>freeTextAnswer</strong>：文字答案 <br> <strong>selectionAnswer</strong>：选择答案 <!--<br> **fileUploadAnswer**：档案上传答案--></td>
+<td>String</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>freeTextAnswerSpec</td>
+<td>任意文字答案设定</td>
+<td>Object</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>selectionAnswerSpec</td>
+<td>选择答案设定</td>
+<td>Object</td>
+<td>None</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<!--
+fileUploadAnswerSpec | 档案上传答案设定 | Object | None | No
+-->
+<p><br></p>
+<h3 id="文字答案设定">文字答案设定</h3><!--(FreeTextAnswer)-->
+<p>文字答案 (freeTextAnswer) 让工作者在一个文字框里输入答案。下面的设定可以用来验证答案是否符合请求者的规定：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>defaultText</td>
+<td>在文字框里的预设值</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>numberOfLines</td>
+<td>文字框呈现的行数</td>
+<td>Integer</td>
+<td>1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>isNumber</td>
+<td>答案必为数字</td>
+<td>Boolean</td>
+<td>False</td>
+<td>No</td>
+</tr>
+<tr>
+<td>minValue</td>
+<td>若答案必为数字，该数字的最小值 <br> <em>若 isNumber 为 False，则本设定无效</em></td>
+<td>Integer</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>maxValue</td>
+<td>若答案必为数字，该数字的最大值 <br> <em>若 isNumber 为 False，则本设定无效</em></td>
+<td>Integer</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>minLength</td>
+<td>答案的最小长度 <br> <em>最小值：0</em></td>
+<td>Integer</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>maxLength</td>
+<td>答案的最大长度 <br> <em>最小值：0</em></td>
+<td>Integer</td>
+<td>None</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<!--
+regex | 用来验证答案的正则表达式 (Javascript 语法) | String | None | No
+regexErrorText | regex validation 失败时的错误讯息 | String | 答案格式不正确 | No
+-->
+<p><br></p>
+<h3 id="选择答案设定">选择答案设定</h3><!--(SelectionAnswer)-->
+<p>选择答案 (selectionAnswer) 让工作者从多个选项中选择零个、一个或甚至多个选项。下面的设定能定义选项呈现的方式，以及选项的内容。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>minSelectionCount</td>
+<td>最少的答案选择数量</td>
+<td>Integer</td>
+<td>1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>maxSelectionCount</td>
+<td>最多的答案选择数量</td>
+<td>Integer</td>
+<td>1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>style</td>
+<td>选项呈现的方式，为下列三种其中之一：<br> <strong>radiobutton</strong>：单选按钮，只有在maxSelectionCount为1时可选 <br> <strong>checkbox</strong> 复选框，最多可选maxSelectionCount个选项 <br> <strong>dropdown</strong>：下拉选项，只有在maxSelectionCount为1时可选</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+</tr>
+<tr>
+<td>options</td>
+<td>包含选项的阵列，有关选项的设定见下表。 <br> <em>必须至少包含一个选项</em></td>
+<td>Array</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="选项设定">选项设定</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>此选项的专属识别号</td>
+<td>String</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>text</td>
+<td>选项的内文</td>
+<td>String</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<!--
+<br>
+
+### 档案上传答案设定(FileUploadAnswer)
+
+档案上传答案 (FileUploadAnswer) 让工作者上传档案至集智的服务器。档案上传后，请求者可以在工作者的答案中取得档案的暂存 URL。请求者可用以下设定限制上传档案的大小：
+
+名称 | 描述 | Type | Default | Required
+--- | --- | --- | --- | ---
+minFileSize | 上传档案的最小限制 (bytes) <br> *最大值：10240 (10M)* | Integer | 0 | No
+maxFileSize | 上传档案的最大限制 (bytes) <br> *最大值：10240 (10M)* | Integer | 10240 | No
+-->
+<p><br></p>
+<h3 id="示例">示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">internalQuestionsForm: &#123;</span><br><span class="line">  questions: [</span><br><span class="line">    &#123;</span><br><span class="line">      id: <span class="string">'introduction'</span>,</span><br><span class="line">      title: <span class="string">'请简单描述你自己'</span>,</span><br><span class="line">      comment: <span class="string">'请告诉我们你活泼可爱的一面'</span>,</span><br><span class="line">      isRequired: <span class="literal">true</span>,</span><br><span class="line">      answerType: <span class="string">'freeTextAnswer'</span>,</span><br><span class="line">      freeTextAnswerSpec: &#123;</span><br><span class="line">        defaultText: <span class="string">'很高兴认识你'</span>,</span><br><span class="line">        numberOfLines: <span class="number">10</span>,</span><br><span class="line">        isNumber: <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      id: <span class="string">'sex'</span>,</span><br><span class="line">      title: <span class="string">'你的性别'</span>,</span><br><span class="line">      isRequired: <span class="literal">true</span>,</span><br><span class="line">      answerType: <span class="string">'selectionAnswer'</span>,</span><br><span class="line">      selectionAnswerSpec: &#123;</span><br><span class="line">        minSelectionCount: <span class="number">1</span>,</span><br><span class="line">        maxSelectionCount: <span class="number">1</span>,</span><br><span class="line">        style: <span class="string">'radiobutton'</span>,</span><br><span class="line">        optionSpecs: [</span><br><span class="line">          &#123;</span><br><span class="line">            id: <span class="string">'male'</span>,</span><br><span class="line">            text: <span class="string">'男'</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            id: <span class="string">'female'</span>,</span><br><span class="line">            text: <span class="string">'女'</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<!--
+    {
+      id: 'FileUploadAnswer_example',
+      title: 'question title',
+      comment: 'question comment',
+      isRequired: true,
+      answerType: 'FileUploadAnswer',
+      answerSpec: {
+        minFileSize: 0,
+        maxFileSize: 10240
+      }
+    },
+-->
+<h2 id="外部问题表单">外部问题表单</h2><!--(externalQuestionsForm)-->
+<p>使用外部问题表单 (externalQuestionsForm) 发布的任务让请求者可以将问题放在自己的网站上，再由我们的网站以 iframe 的方式呈现在工作者的浏览器。外部问题表单的设定如下：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>外部问题表单所在的 url <br> <!--**重要**：*必须使用 HTTPS 协定*--></td>
+<td>String</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>frameHeight</td>
+<td>呈现外部问题表单的 iframe 高度</td>
+<td>Integer</td>
+<td>500</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="外部问题表单的_url_与参数">外部问题表单的 url 与参数</h3><p>为了让请求者可以辨别答案来源的工作者及指定工作，系统在载入 iframe 的 url 时，会在请求者所提供的 url 后面加入数个参数： taskId, jobId, contributorId, submitTo 。这些参数将以query的方式传入：<code>?</code>之后为附上的参数, <code>=</code> 前面为参数的名称、后面为参数的值，参数之间用<code>&amp;</code>隔开。</p>
+<p>例如，本来的 url 为：</p>
+<p><code>https://awesometask.crowdsdom.com/fantasticsurvey</code></p>
+<p>在 iframe 中实际载入的 url 为：</p>
+<p><code>https://awesometask.crowdsdom.com/fantasticsurvey?taskId=507f1f77bcf86cd799439011</code><br><code>&amp;jobId=507f191e810c19729de860ea</code><br><code>&amp;contributorId=5637fdda9629f2180030ddf2</code><br><code>&amp;submitTo=https://api.crowdsdom.com/v1/tasks/507f1f77bcf86cd799439011/externalSubmit</code></p>
+<h4 id="预览模式">预览模式</h4><p>在预览模式中，<code>taskId</code>的值为<code>preview</code>，请求者可用此资讯判断是否为预览。预览时，外部问题的表单应该不能提交。  </p>
+<h3 id="提交外部问题表单">提交外部问题表单</h3><p>外部问题表单必须提交结果至 <code>https://api.crowdsdom.com/v1/tasks/:taskId/externalSubmit</code>, 也就是 url 参数中的 <code>submitTo</code> 来完成指定工作，这样我们的系统才有办法判断该答案所对应的指定工作。</p>
+<p><br></p>
+<h3 id="示例-1">示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">externalQuestionsForm: &#123;</span><br><span class="line">  url: <span class="string">'https://awesometask.crowdsdom.com/fantasticsurvey'</span>,</span><br><span class="line">  frameHeight: <span class="number">400</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="HTML问题表单">HTML问题表单</h2><!--(htmlQuestionsForm)-->
+<p>在 HTML 问题表单 (htmlQuestionsForm) 中，请求者可以自行用 HTML 的语法定义任务的内容，由集智的网站呈现。HTML问题表单的设定如下：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td>任务的内容 (HTML)，详细规范见下段描述</td>
+<td>String</td>
+<td>None</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="HTML_任务内容规范">HTML 任务内容规范</h3><ol>
+<li><p>在 content 中的 HTML 必须要有 <code>id</code> 为 <code>crowdsdom_form</code> 的表单 (form)，当工作者点击完成任务时，我们的系统会提交这个表单，并把结果储存起来。若 HTML 没有 <code>id</code> 为 <code>crowdsdom_form</code> 的表单，系统将不会发布该任务。</p>
+</li>
+<li><p>请不要在表单中设定 <code>action</code>，也不要定义自己提交表单的按钮。系统不会让工作者在 HTML 中提交表单，只会造成工作者的混淆。</p>
+</li>
+<li><p>另外，在 HTML 中不用包含 <code>body head html</code> 等标签，所有 <code>script</code> 标签的内容也都会被忽略。</p>
+</li>
+</ol>
+<h3 id="示例-2">示例</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">htmlQuestionsForm: &#123;</span><br><span class="line">  content: '&lt;h1&gt;这是一个自我介绍的任务&lt;/h1&gt;</span><br><span class="line">            &lt;form name="rowdsdom_form" id="crowdsdom_form"&gt;</span><br><span class="line">            &lt;h1&gt;请简单描述你自己&lt;/h1&gt;</span><br><span class="line">            &lt;p&gt;&lt;textarea name="introduction" cols="80" rows="3"&gt;&lt;/textarea&gt;很高兴认识你&lt;/p&gt;</span><br><span class="line">            &lt;p&gt;请告诉我们你活泼可爱的一面&lt;/p&gt;</span><br><span class="line">            &lt;h1&gt;你的性别&lt;/h1&gt;</span><br><span class="line">            &lt;input type="radio" name="sex" value="male" checked&gt;男</span><br><span class="line">            &lt;br&gt;</span><br><span class="line">            &lt;input type="radio" name="sex" value="female"&gt;女</span><br><span class="line">            &lt;br&gt;</span><br><span class="line">            &lt;/form&gt;'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+	  
+
+    <hr/>
+    <div class="ds-thread" data-thread-key="cih8qu98h000pregjir67sead" data-title="任务问题表单 (QuestionsForm)"
+data-url="任务问题/index.html"></div>
+
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			
+		
+	
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+			
+		
+	
+		
+			
+			
+			
+	
+		<li class="prev"><a href="/指定工作/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next"><a href="/集智任务/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 集智数据
+      
+</p> </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"undefined"};
+(function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+ })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>
